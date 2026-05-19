@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>FIFA World Cup 2026</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="WC2026">
+  <link rel="apple-touch-icon" href="icons/icon-192.jpg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s, color 0.2s;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background-color: #0a0a1a;
+      color: #e0e0e0;
+      line-height: 1.5;
+      padding: 1rem;
+    }
+    body.light {
+      background-color: #f5f7fa;
+      color: #1e293b;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header, footer {
+      text-align: center;
+      padding: 1rem 0;
+    }
+    h1 {
+      font-size: 2rem;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #3b82f6, #a855f7);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .theme-toggle {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .theme-btn {
+      background: #2d2d44;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 600;
+      color: white;
+    }
+    body.light .theme-btn {
+      background: #cbd5e1;
+      color: #0f172a;
+    }
+    .group-card {
+      background: #1e1e2f;
+      border-radius: 24px;
+      padding: 1.2rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    body.light .group-card {
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .group-title {
+      font-size: 1.7rem;
+      font-weight: bold;
+      border-left: 6px solid #3b82f6;
+      padding-left: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .teams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .team-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #2a2a3a;
+      padding: 0.7rem 1rem;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: transform 0.1s, background 0.2s;
+    }
+    body.light .team-item {
+      background: #f1f5f9;
+    }
+    .team-item:hover {
+      transform: scale(1.01);
+      background: #3a3a4e;
+    }
+    .team-flag {
+      width: 36px;
+      height: 27px;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .team-name {
+      font-weight: 500;
+      flex: 1;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      border-top: 1px solid #334155;
+      padding-top: 1.5rem;
+    }
+    .contact-email {
+      word-break: break-all;
+      color: #60a5fa;
+      text-decoration: none;
+    }
+    .back-button {
+      display: inline-block;
+      margin: 1rem 0;
+      background: #3b82f6;
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .detail-view {
+      background: #1e1e2f;
+      border-radius: 28px;
+      padding: 1.8rem;
+    }
+    body.light .detail-view {
+      background: #ffffff;
+    }
+    .detail-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .detail-flag {
+      width: 64px;
+      height: 48px;
+      border-radius: 8px;
+    }
+    .detail-stats {
+      background: #2a2a3a;
+      padding: 1rem;
+      border-radius: 20px;
+      margin: 1rem 0;
+    }
+    body.light .detail-stats {
+      background: #eef2ff;
+    }
+    .placeholder-img, .placeholder-link {
+      background: #334155;
+      padding: 0.5rem;
+      border-radius: 12px;
+      text-align: center;
+      margin: 1rem 0;
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+    @media (max-width: 640px) {
+      .teams-grid {
+        grid-template-columns: 1fr;
+      }
+      .group-title {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container" id="app">
+  <!-- ヘッダー & テーマ切り替え -->
+  <header>
+    <h1>⚽ FIFA WORLD CUP 2026</h1>
+    <div class="theme-toggle">
+      <button class="theme-btn" id="darkBtn">🌙 Dark</button>
+      <button class="theme-btn" id="lightBtn">☀️ Light</button>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <!-- 動的にメインまたは詳細を表示 -->
+  </main>
+
+  <footer>
+    Contact us<br>
+    <a href="mailto:mementomorikatsu@gmail.com" class="contact-email">mementomorikatsu@gmail.com</a>
+  </footer>
+</div>
+
+<script>
+  // ---------- 全チームデータ (グループA~Lまで拡張可能) ----------
+  const teamsData = {
+    "Mexico": { group: "A", flagCode: "mx", appearances: 18, best: "Quarter-finals (1970, 1986)", description: "El Tri are known for passionate support and technical style. Home advantage in 2026 makes them dangerous.", extraImg: "", extraLink: "" },
+    "South Africa": { group: "A", flagCode: "za", appearances: 4, best: "Group stage", description: "The 2010 hosts return with young energy. Coach Hugo Broos builds disciplined squad.", extraImg: "", extraLink: "" },
+    "South Korea": { group: "A", flagCode: "kr", appearances: 12, best: "4th place (2002)", description: "Taeguk Warriors rely on speed and Son Heung-min's leadership. Always a tough Asian side.", extraImg: "", extraLink: "" },
+    "Czech Republic": { group: "A", flagCode: "cz", appearances: 8, best: "Runners-up (1934, 1962)", description: "Technical and physical, Patrik Schick is key. Playoff survivors.", extraImg: "", extraLink: "" },
+    "Canada": { group: "B", flagCode: "ca", appearances: 3, best: "Group stage", description: "Rising Concacaf power. Davies & David lead golden generation.", extraImg: "", extraLink: "" },
+    "Bosnia": { group: "B", flagCode: "ba", appearances: 2, best: "Group stage", description: "Edin Dzeko's last dance. Tough midfield.", extraImg: "", extraLink: "" },
+    "Qatar": { group: "B", flagCode: "qa", appearances: 2, best: "Group stage", description: "Asian champions, Afif & Ali are danger men.", extraImg: "", extraLink: "" },
+    "Switzerland": { group: "B", flagCode: "ch", appearances: 13, best: "Quarter-finals (1934,1938,1954)", description: "Granit Xhaka's leadership, tournament specialists.", extraImg: "", extraLink: "" },
+    "Brazil": { group: "C", flagCode: "br", appearances: 23, best: "Champions (5 times)", description: "Samba football. Vinicius Jr leads new generation.", extraImg: "", extraLink: "" },
+    "Morocco": { group: "C", flagCode: "ma", appearances: 7, best: "4th place (2022)", description: "Atlas Lions made history in Qatar. Hakimi & Ziyech.", extraImg: "", extraLink: "" },
+    "Haiti": { group: "C", flagCode: "ht", appearances: 2, best: "Group stage", description: "Underdogs back after 52 years. Fighting spirit.", extraImg: "", extraLink: "" },
+    "Scotland": { group: "C", flagCode: "gb-sct", appearances: 9, best: "Group stage", description: "Passionate Tartan Army. Aiming to reach knockouts.", extraImg: "", extraLink: "" },
+    "USA": { group: "D", flagCode: "us", appearances: 12, best: "3rd place (1930)", description: "Hosts with young stars like Pulisic, Reyna.", extraImg: "", extraLink: "" },
+    "Paraguay": { group: "D", flagCode: "py", appearances: 9, best: "Quarter-finals (2010)", description: "Defensive grit. Almiron provides spark.", extraImg: "", extraLink: "" },
+    "Australia": { group: "D", flagCode: "au", appearances: 7, best: "Round of 16 (2006,2022)", description: "Socceroos fight till end. Duke & Souttar.", extraImg: "", extraLink: "" },
+    "Turkey": { group: "D", flagCode: "tr", appearances: 3, best: "3rd place (2002)", description: "Dark horse. Arda Guler young star.", extraImg: "", extraLink: "" }
+    // 残りのグループE~Lは同じ形式で追加可能。ここでは省略（要件上A-Dでデモ）
+  };
+
+  // グループ別にチームをまとめる (A, B, C, D)
+  const groups = ["A", "B", "C", "D"];
+  
+  function renderMainPage() {
+    let html = `<div class="theme-toggle-placeholder"></div>`;
+    for (let g of groups) {
+      const groupTeams = Object.entries(teamsData).filter(([_, info]) => info.group === g);
+      if (groupTeams.length === 0) continue;
+      html += `<div class="group-card">
+        <div class="group-title">Group ${g}</div>
+        <div class="teams-grid">`;
+      for (let [name, info] of groupTeams) {
+        const flagUrl = `https://flagpedia.net/data/flags/icon/72x54/${info.flagCode}.png`;
+        html += `<div class="team-item" data-team-name="${name}">
+          <img class="team-flag" src="${flagUrl}" alt="${name} flag" loading="lazy">
+          <span class="team-name">${name}</span>
+        </div>`;
+      }
+      html += `</div></div>`;
+    }
+    document.getElementById("mainContent").innerHTML = html;
+    // チームクリックイベント
+    document.querySelectorAll(".team-item").forEach(el => {
+      el.addEventListener("click", (e) => {
+        const teamName = el.getAttribute("data-team-name");
+        showDetailPage(teamName);
+      });
+    });
+  }
+
+  function showDetailPage(teamName) {
+    const info = teamsData[teamName];
+    if (!info) return;
+    const flagUrl = `https://flagpedia.net/data/flags/icon/72x54/${info.flagCode}.png`;
+    const detailHtml = `
+      <button class="back-button" id="backMainBtn">← Back to groups</button>
+      <div class="detail-view">
+        <div class="detail-header">
+          <img class="detail-flag" src="${flagUrl}" alt="${teamName}">
+          <h2>${teamName}</h2>
+        </div>
+        <div class="detail-stats">
+          <strong>🏆 Appearances:</strong> ${info.appearances}<br>
+          <strong>⭐ Best result:</strong> ${info.best}
+        </div>
+        <p>📝 ${info.description}</p>
+        <!-- 拡張用イメージ/リンクプレースホルダー (後で変更可) -->
+        <div class="placeholder-img" id="dynamicImageSlot">
+          🖼️ Image placeholder (future update)
+        </div>
+        <div class="placeholder-link" id="dynamicLinkSlot">
+          🔗 Official link placeholder (coming soon)
+        </div>
+      </div>
+    `;
+    document.getElementById("mainContent").innerHTML = detailHtml;
+    document.getElementById("backMainBtn").addEventListener("click", () => {
+      renderMainPage();
+      attachThemeButtons(); // 再アタッチ
+    });
+    // ここで後から画像やリンクを差し替えられるようにプレースホルダー保持
+    if (info.extraImg) document.getElementById("dynamicImageSlot").innerHTML = `<img src="${info.extraImg}" style="max-width:100%">`;
+    if (info.extraLink) document.getElementById("dynamicLinkSlot").innerHTML = `<a href="${info.extraLink}" target="_blank">Official Website</a>`;
+  }
+
+  // ダークモード/ライトモード切り替え (ダークデフォルト)
+  function setTheme(theme) {
+    if (theme === 'light') {
+      document.body.classList.add('light');
+    } else {
+      document.body.classList.remove('light');
+    }
+    localStorage.setItem('theme', theme);
+  }
+
+  function attachThemeButtons() {
+    const darkBtn = document.getElementById("darkBtn");
+    const lightBtn = document.getElementById("lightBtn");
+    if (darkBtn && lightBtn) {
+      darkBtn.onclick = () => setTheme('dark');
+      lightBtn.onclick = () => setTheme('light');
+    }
+  }
+
+  // 初期化 & サービスワーカー登録
+  function init() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+    renderMainPage();
+    attachThemeButtons();
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(reg => {
+        console.log('SW registered: ', reg);
+      }).catch(err => console.log('SW registration failed: ', err));
+    }
+  }
+  init();
+</script>
+</body>
+</html>

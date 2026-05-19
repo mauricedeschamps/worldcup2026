@@ -135,6 +135,8 @@
       border-radius: 40px;
       text-decoration: none;
       font-weight: 500;
+      cursor: pointer;
+      border: none;
     }
     .detail-view {
       background: #1e1e2f;
@@ -174,6 +176,10 @@
       font-size: 0.8rem;
       color: #94a3b8;
     }
+    body.light .placeholder-img, body.light .placeholder-link {
+      background: #e2e8f0;
+      color: #475569;
+    }
     @media (max-width: 640px) {
       .teams-grid {
         grid-template-columns: 1fr;
@@ -186,7 +192,6 @@
 </head>
 <body>
 <div class="container" id="app">
-  <!-- ヘッダー & テーマ切り替え -->
   <header>
     <h1>⚽ FIFA WORLD CUP 2026</h1>
     <div class="theme-toggle">
@@ -206,32 +211,50 @@
 </div>
 
 <script>
-  // ---------- 全チームデータ (グループA~Lまで拡張可能) ----------
+  // ---------- 全チームデータ (グループA〜G、28チーム) ----------
   const teamsData = {
+    // Group A
     "Mexico": { group: "A", flagCode: "mx", appearances: 18, best: "Quarter-finals (1970, 1986)", description: "El Tri are known for passionate support and technical style. Home advantage in 2026 makes them dangerous.", extraImg: "", extraLink: "" },
     "South Africa": { group: "A", flagCode: "za", appearances: 4, best: "Group stage", description: "The 2010 hosts return with young energy. Coach Hugo Broos builds disciplined squad.", extraImg: "", extraLink: "" },
     "South Korea": { group: "A", flagCode: "kr", appearances: 12, best: "4th place (2002)", description: "Taeguk Warriors rely on speed and Son Heung-min's leadership. Always a tough Asian side.", extraImg: "", extraLink: "" },
     "Czech Republic": { group: "A", flagCode: "cz", appearances: 8, best: "Runners-up (1934, 1962)", description: "Technical and physical, Patrik Schick is key. Playoff survivors.", extraImg: "", extraLink: "" },
+    // Group B
     "Canada": { group: "B", flagCode: "ca", appearances: 3, best: "Group stage", description: "Rising Concacaf power. Davies & David lead golden generation.", extraImg: "", extraLink: "" },
-    "Bosnia": { group: "B", flagCode: "ba", appearances: 2, best: "Group stage", description: "Edin Dzeko's last dance. Tough midfield.", extraImg: "", extraLink: "" },
+    "Bosnia and Herzegovina": { group: "B", flagCode: "ba", appearances: 2, best: "Group stage", description: "Edin Dzeko's last dance. Tough midfield.", extraImg: "", extraLink: "" },
     "Qatar": { group: "B", flagCode: "qa", appearances: 2, best: "Group stage", description: "Asian champions, Afif & Ali are danger men.", extraImg: "", extraLink: "" },
     "Switzerland": { group: "B", flagCode: "ch", appearances: 13, best: "Quarter-finals (1934,1938,1954)", description: "Granit Xhaka's leadership, tournament specialists.", extraImg: "", extraLink: "" },
+    // Group C
     "Brazil": { group: "C", flagCode: "br", appearances: 23, best: "Champions (5 times)", description: "Samba football. Vinicius Jr leads new generation.", extraImg: "", extraLink: "" },
     "Morocco": { group: "C", flagCode: "ma", appearances: 7, best: "4th place (2022)", description: "Atlas Lions made history in Qatar. Hakimi & Ziyech.", extraImg: "", extraLink: "" },
     "Haiti": { group: "C", flagCode: "ht", appearances: 2, best: "Group stage", description: "Underdogs back after 52 years. Fighting spirit.", extraImg: "", extraLink: "" },
     "Scotland": { group: "C", flagCode: "gb-sct", appearances: 9, best: "Group stage", description: "Passionate Tartan Army. Aiming to reach knockouts.", extraImg: "", extraLink: "" },
-    "USA": { group: "D", flagCode: "us", appearances: 12, best: "3rd place (1930)", description: "Hosts with young stars like Pulisic, Reyna.", extraImg: "", extraLink: "" },
+    // Group D
+    "United States": { group: "D", flagCode: "us", appearances: 12, best: "3rd place (1930)", description: "Hosts with young stars like Pulisic, Reyna.", extraImg: "", extraLink: "" },
     "Paraguay": { group: "D", flagCode: "py", appearances: 9, best: "Quarter-finals (2010)", description: "Defensive grit. Almiron provides spark.", extraImg: "", extraLink: "" },
     "Australia": { group: "D", flagCode: "au", appearances: 7, best: "Round of 16 (2006,2022)", description: "Socceroos fight till end. Duke & Souttar.", extraImg: "", extraLink: "" },
-    "Turkey": { group: "D", flagCode: "tr", appearances: 3, best: "3rd place (2002)", description: "Dark horse. Arda Guler young star.", extraImg: "", extraLink: "" }
-    // 残りのグループE~Lは同じ形式で追加可能。ここでは省略（要件上A-Dでデモ）
+    "Turkey": { group: "D", flagCode: "tr", appearances: 3, best: "3rd place (2002)", description: "Dark horse. Arda Guler young star.", extraImg: "", extraLink: "" },
+    // Group E
+    "Germany": { group: "E", flagCode: "de", appearances: 21, best: "Champions (1954,1974,1990,2014)", description: "Four-time winners seeking redemption after two early exits. Young talents like Wirtz and Musiala.", extraImg: "", extraLink: "" },
+    "Croatia": { group: "E", flagCode: "hr", appearances: 7, best: "Runners-up (2018)", description: "Modric's likely farewell. Midfield mastery and tournament grit.", extraImg: "", extraLink: "" },
+    "Japan": { group: "E", flagCode: "jp", appearances: 8, best: "Round of 16", description: "Technical discipline and teamwork. Aiming to break last-16 barrier.", extraImg: "", extraLink: "" },
+    "Tunisia": { group: "E", flagCode: "tn", appearances: 7, best: "Group stage", description: "Carthage Eagles defend strongly. Key man: Hannibal Mejbri.", extraImg: "", extraLink: "" },
+    // Group F
+    "Netherlands": { group: "F", flagCode: "nl", appearances: 12, best: "Runners-up (1974,1978,2010)", description: "Orange revival under Koeman. Van Dijk, De Jong, and exciting attackers.", extraImg: "", extraLink: "" },
+    "England": { group: "F", flagCode: "gb-eng", appearances: 17, best: "Champions (1966)", description: "Golden generation. Bellingham, Kane, Saka lead serious title bid.", extraImg: "", extraLink: "" },
+    "Senegal": { group: "F", flagCode: "sn", appearances: 4, best: "Quarter-finals (2002)", description: "African champions. Mane and Koulibaly bring experience and power.", extraImg: "", extraLink: "" },
+    "Panama": { group: "F", flagCode: "pa", appearances: 2, best: "Group stage", description: "Underdogs with fighting spirit. Looking for first win.", extraImg: "", extraLink: "" },
+    // Group G
+    "Argentina": { group: "G", flagCode: "ar", appearances: 19, best: "Champions (1978,1986,2022)", description: "Defending champions. New era without Messi? Alvarez, Fernandez, Martinez.", extraImg: "", extraLink: "" },
+    "Belgium": { group: "G", flagCode: "be", appearances: 14, best: "3rd place (2018)", description: "Golden generation's last stand. De Bruyne, Lukaku, Courtois.", extraImg: "", extraLink: "" },
+    "Cameroon": { group: "G", flagCode: "cm", appearances: 8, best: "Quarter-finals (1990)", description: "Indomitable Lions. Onana, Choupo-Moting, physical style.", extraImg: "", extraLink: "" },
+    "Saudi Arabia": { group: "G", flagCode: "sa", appearances: 7, best: "Round of 16 (1994)", description: "Asian giants. Famous win over Argentina in 2022.", extraImg: "", extraLink: "" }
   };
 
-  // グループ別にチームをまとめる (A, B, C, D)
-  const groups = ["A", "B", "C", "D"];
+  // グループA〜Gまで順に表示
+  const groups = ["A", "B", "C", "D", "E", "F", "G"];
   
   function renderMainPage() {
-    let html = `<div class="theme-toggle-placeholder"></div>`;
+    let html = ``;
     for (let g of groups) {
       const groupTeams = Object.entries(teamsData).filter(([_, info]) => info.group === g);
       if (groupTeams.length === 0) continue;
@@ -240,7 +263,7 @@
         <div class="teams-grid">`;
       for (let [name, info] of groupTeams) {
         const flagUrl = `https://flagpedia.net/data/flags/icon/72x54/${info.flagCode}.png`;
-        html += `<div class="team-item" data-team-name="${name}">
+        html += `<div class="team-item" data-team-name="${name.replace(/&/g, '&amp;')}">
           <img class="team-flag" src="${flagUrl}" alt="${name} flag" loading="lazy">
           <span class="team-name">${name}</span>
         </div>`;
@@ -287,7 +310,7 @@
       renderMainPage();
       attachThemeButtons(); // 再アタッチ
     });
-    // ここで後から画像やリンクを差し替えられるようにプレースホルダー保持
+    // 後から画像やリンクを差し替えられるようにプレースホルダー保持
     if (info.extraImg) document.getElementById("dynamicImageSlot").innerHTML = `<img src="${info.extraImg}" style="max-width:100%">`;
     if (info.extraLink) document.getElementById("dynamicLinkSlot").innerHTML = `<a href="${info.extraLink}" target="_blank">Official Website</a>`;
   }

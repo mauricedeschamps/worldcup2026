@@ -201,7 +201,7 @@
   </header>
 
   <main id="mainContent">
-    <!-- 動的にメインまたは詳細を表示 -->
+    <!-- Dynamic content -->
   </main>
 
   <footer>
@@ -211,47 +211,71 @@
 </div>
 
 <script>
-  // ---------- 全チームデータ (グループA〜G、28チーム) ----------
+  // ---------- ALL 48 TEAMS (FULL & CORRECT) ----------
   const teamsData = {
-    // Group A
-    "Mexico": { group: "A", flagCode: "mx", appearances: 18, best: "Quarter-finals (1970, 1986)", description: "El Tri are known for passionate support and technical style. Home advantage in 2026 makes them dangerous.", extraImg: "", extraLink: "" },
-    "South Africa": { group: "A", flagCode: "za", appearances: 4, best: "Group stage", description: "The 2010 hosts return with young energy. Coach Hugo Broos builds disciplined squad.", extraImg: "", extraLink: "" },
-    "South Korea": { group: "A", flagCode: "kr", appearances: 12, best: "4th place (2002)", description: "Taeguk Warriors rely on speed and Son Heung-min's leadership. Always a tough Asian side.", extraImg: "", extraLink: "" },
-    "Czech Republic": { group: "A", flagCode: "cz", appearances: 8, best: "Runners-up (1934, 1962)", description: "Technical and physical, Patrik Schick is key. Playoff survivors.", extraImg: "", extraLink: "" },
-    // Group B
-    "Canada": { group: "B", flagCode: "ca", appearances: 3, best: "Group stage", description: "Rising Concacaf power. Davies & David lead golden generation.", extraImg: "", extraLink: "" },
-    "Bosnia and Herzegovina": { group: "B", flagCode: "ba", appearances: 2, best: "Group stage", description: "Edin Dzeko's last dance. Tough midfield.", extraImg: "", extraLink: "" },
-    "Qatar": { group: "B", flagCode: "qa", appearances: 2, best: "Group stage", description: "Asian champions, Afif & Ali are danger men.", extraImg: "", extraLink: "" },
-    "Switzerland": { group: "B", flagCode: "ch", appearances: 13, best: "Quarter-finals (1934,1938,1954)", description: "Granit Xhaka's leadership, tournament specialists.", extraImg: "", extraLink: "" },
-    // Group C
-    "Brazil": { group: "C", flagCode: "br", appearances: 23, best: "Champions (5 times)", description: "Samba football. Vinicius Jr leads new generation.", extraImg: "", extraLink: "" },
-    "Morocco": { group: "C", flagCode: "ma", appearances: 7, best: "4th place (2022)", description: "Atlas Lions made history in Qatar. Hakimi & Ziyech.", extraImg: "", extraLink: "" },
-    "Haiti": { group: "C", flagCode: "ht", appearances: 2, best: "Group stage", description: "Underdogs back after 52 years. Fighting spirit.", extraImg: "", extraLink: "" },
-    "Scotland": { group: "C", flagCode: "gb-sct", appearances: 9, best: "Group stage", description: "Passionate Tartan Army. Aiming to reach knockouts.", extraImg: "", extraLink: "" },
-    // Group D
-    "United States": { group: "D", flagCode: "us", appearances: 12, best: "3rd place (1930)", description: "Hosts with young stars like Pulisic, Reyna.", extraImg: "", extraLink: "" },
-    "Paraguay": { group: "D", flagCode: "py", appearances: 9, best: "Quarter-finals (2010)", description: "Defensive grit. Almiron provides spark.", extraImg: "", extraLink: "" },
-    "Australia": { group: "D", flagCode: "au", appearances: 7, best: "Round of 16 (2006,2022)", description: "Socceroos fight till end. Duke & Souttar.", extraImg: "", extraLink: "" },
-    "Turkey": { group: "D", flagCode: "tr", appearances: 3, best: "3rd place (2002)", description: "Dark horse. Arda Guler young star.", extraImg: "", extraLink: "" },
-    // Group E
-    "Germany": { group: "E", flagCode: "de", appearances: 21, best: "Champions (1954,1974,1990,2014)", description: "Four-time winners seeking redemption after two early exits. Young talents like Wirtz and Musiala.", extraImg: "", extraLink: "" },
-    "Croatia": { group: "E", flagCode: "hr", appearances: 7, best: "Runners-up (2018)", description: "Modric's likely farewell. Midfield mastery and tournament grit.", extraImg: "", extraLink: "" },
-    "Japan": { group: "E", flagCode: "jp", appearances: 8, best: "Round of 16", description: "Technical discipline and teamwork. Aiming to break last-16 barrier.", extraImg: "", extraLink: "" },
-    "Tunisia": { group: "E", flagCode: "tn", appearances: 7, best: "Group stage", description: "Carthage Eagles defend strongly. Key man: Hannibal Mejbri.", extraImg: "", extraLink: "" },
-    // Group F
-    "Netherlands": { group: "F", flagCode: "nl", appearances: 12, best: "Runners-up (1974,1978,2010)", description: "Orange revival under Koeman. Van Dijk, De Jong, and exciting attackers.", extraImg: "", extraLink: "" },
-    "England": { group: "F", flagCode: "gb-eng", appearances: 17, best: "Champions (1966)", description: "Golden generation. Bellingham, Kane, Saka lead serious title bid.", extraImg: "", extraLink: "" },
-    "Senegal": { group: "F", flagCode: "sn", appearances: 4, best: "Quarter-finals (2002)", description: "African champions. Mane and Koulibaly bring experience and power.", extraImg: "", extraLink: "" },
-    "Panama": { group: "F", flagCode: "pa", appearances: 2, best: "Group stage", description: "Underdogs with fighting spirit. Looking for first win.", extraImg: "", extraLink: "" },
-    // Group G
-    "Argentina": { group: "G", flagCode: "ar", appearances: 19, best: "Champions (1978,1986,2022)", description: "Defending champions. New era without Messi? Alvarez, Fernandez, Martinez.", extraImg: "", extraLink: "" },
-    "Belgium": { group: "G", flagCode: "be", appearances: 14, best: "3rd place (2018)", description: "Golden generation's last stand. De Bruyne, Lukaku, Courtois.", extraImg: "", extraLink: "" },
-    "Cameroon": { group: "G", flagCode: "cm", appearances: 8, best: "Quarter-finals (1990)", description: "Indomitable Lions. Onana, Choupo-Moting, physical style.", extraImg: "", extraLink: "" },
-    "Saudi Arabia": { group: "G", flagCode: "sa", appearances: 7, best: "Round of 16 (1994)", description: "Asian giants. Famous win over Argentina in 2022.", extraImg: "", extraLink: "" }
+    // --- Group A ---
+    "Mexico": { group: "A", flagCode: "mx", appearances: 18, best: "Quarter-finals (1970, 1986)", description: "El Tri combine passion and technique, dangerous at home.", extraImg: "", extraLink: "" },
+    "South Africa": { group: "A", flagCode: "za", appearances: 4, best: "Group stage", description: "Young squad returns after 16 years, coached by Hugo Broos.", extraImg: "", extraLink: "" },
+    "South Korea": { group: "A", flagCode: "kr", appearances: 12, best: "4th place (2002)", description: "Speed and Son Heung-min's leadership define the Taeguk Warriors.", extraImg: "", extraLink: "" },
+    "Czech Republic": { group: "A", flagCode: "cz", appearances: 8, best: "Runners-up (1934, 1962)", description: "Playoff survivors, Patrik Schick leads technical side.", extraImg: "", extraLink: "" },
+    // --- Group B ---
+    "Canada": { group: "B", flagCode: "ca", appearances: 3, best: "Group stage", description: "Concacaf rising power with Davies and David.", extraImg: "", extraLink: "" },
+    "Bosnia and Herzegovina": { group: "B", flagCode: "ba", appearances: 2, best: "Group stage", description: "Edin Dzeko's last dance, tough midfield.", extraImg: "", extraLink: "" },
+    "Qatar": { group: "B", flagCode: "qa", appearances: 2, best: "Group stage", description: "Asian champions, Afif & Ali key to success.", extraImg: "", extraLink: "" },
+    "Switzerland": { group: "B", flagCode: "ch", appearances: 13, best: "Quarter-finals (1934,1938,1954)", description: "Tournament specialists led by Granit Xhaka.", extraImg: "", extraLink: "" },
+    // --- Group C ---
+    "Brazil": { group: "C", flagCode: "br", appearances: 23, best: "Champions (5 times)", description: "Samba football, Vinicius Jr leads new generation.", extraImg: "", extraLink: "" },
+    "Morocco": { group: "C", flagCode: "ma", appearances: 7, best: "4th place (2022)", description: "Atlas Lions historic semis, Hakimi & Ziyech shine.", extraImg: "", extraLink: "" },
+    "Haiti": { group: "C", flagCode: "ht", appearances: 2, best: "Group stage", description: "Underdogs back after 52 years, fighting spirit.", extraImg: "", extraLink: "" },
+    "Scotland": { group: "C", flagCode: "gb-sct", appearances: 9, best: "Group stage", description: "Passionate Tartan Army aim for knockouts.", extraImg: "", extraLink: "" },
+    // --- Group D ---
+    "United States": { group: "D", flagCode: "us", appearances: 12, best: "3rd place (1930)", description: "Hosts with young stars Pulisic, Reyna.", extraImg: "", extraLink: "" },
+    "Australia": { group: "D", flagCode: "au", appearances: 7, best: "Round of 16 (2006,2022)", description: "Socceroos fight hard, Duke & Souttar leaders.", extraImg: "", extraLink: "" },
+    "Paraguay": { group: "D", flagCode: "py", appearances: 9, best: "Quarter-finals (2010)", description: "Defensive grit, Almiron provides spark.", extraImg: "", extraLink: "" },
+    "Turkey": { group: "D", flagCode: "tr", appearances: 3, best: "3rd place (2002)", description: "Dark horse with young star Arda Guler.", extraImg: "", extraLink: "" },
+    // --- Group E ---
+    "Germany": { group: "E", flagCode: "de", appearances: 21, best: "Champions (1954,1974,1990,2014)", description: "Four-time winners seek redemption.", extraImg: "", extraLink: "" },
+    "Ecuador": { group: "E", flagCode: "ec", appearances: 5, best: "Round of 16 (2006)", description: "Solid defence, Moises Caicedo key in midfield.", extraImg: "", extraLink: "" },
+    "Ivory Coast": { group: "E", flagCode: "ci", appearances: 4, best: "Group stage", description: "African power, Franck Kessie leads.", extraImg: "", extraLink: "" },
+    "Curacao": { group: "E", flagCode: "cw", appearances: 1, best: "Debut", description: "First-ever World Cup, smallest nation to qualify.", extraImg: "", extraLink: "" },
+    // --- Group F ---
+    "Netherlands": { group: "F", flagCode: "nl", appearances: 12, best: "Runners-up (1974,1978,2010)", description: "Orange revival, Van Dijk & De Jong.", extraImg: "", extraLink: "" },
+    "Japan": { group: "F", flagCode: "jp", appearances: 8, best: "Round of 16", description: "Technical discipline, aim to break last-16 barrier.", extraImg: "", extraLink: "" },
+    "Sweden": { group: "F", flagCode: "se", appearances: 13, best: "Runners-up (1958)", description: "Solid defensive unit, Gyokeres leads attack.", extraImg: "", extraLink: "" },
+    "Tunisia": { group: "F", flagCode: "tn", appearances: 7, best: "Group stage", description: "Carthage Eagles defend strongly.", extraImg: "", extraLink: "" },
+    // --- Group G ---
+    "Belgium": { group: "G", flagCode: "be", appearances: 14, best: "3rd place (2018)", description: "Golden generation's last stand, De Bruyne.", extraImg: "", extraLink: "" },
+    "Egypt": { group: "G", flagCode: "eg", appearances: 4, best: "Group stage", description: "Salah carries Pharaohs' hopes.", extraImg: "", extraLink: "" },
+    "Iran": { group: "G", flagCode: "ir", appearances: 7, best: "Group stage", description: "Disciplined, physical, Taremi & Azmoun.", extraImg: "", extraLink: "" },
+    "New Zealand": { group: "G", flagCode: "nz", appearances: 3, best: "Group stage", description: "OFC champions, Chris Wood aerial threat.", extraImg: "", extraLink: "" },
+    // --- Group H ---
+    "Spain": { group: "H", flagCode: "es", appearances: 17, best: "Champions (2010)", description: "Possession masters, Pedri & Gavi young core.", extraImg: "", extraLink: "" },
+    "Uruguay": { group: "H", flagCode: "uy", appearances: 15, best: "Champions (1930,1950)", description: "La Celeste never give up, Nunez & Valverde.", extraImg: "", extraLink: "" },
+    "Saudi Arabia": { group: "H", flagCode: "sa", appearances: 7, best: "Round of 16 (1994)", description: "Asian giants, famous win over Argentina.", extraImg: "", extraLink: "" },
+    "Cape Verde": { group: "H", flagCode: "cv", appearances: 1, best: "Debut", description: "First World Cup, Blue Sharks are debutants.", extraImg: "", extraLink: "" },
+    // --- Group I ---
+    "France": { group: "I", flagCode: "fr", appearances: 17, best: "Champions (1998,2018)", description: "Reigning finalists, Mbappe leads.", extraImg: "", extraLink: "" },
+    "Senegal": { group: "I", flagCode: "sn", appearances: 4, best: "Quarter-finals (2002)", description: "African champions, Mane & Koulibaly.", extraImg: "", extraLink: "" },
+    "Norway": { group: "I", flagCode: "no", appearances: 4, best: "Round of 16 (1938,1998)", description: "Haaland & Odegaard, Scandinavian stars.", extraImg: "", extraLink: "" },
+    "Iraq": { group: "I", flagCode: "iq", appearances: 2, best: "Group stage", description: "Back after 40 years, Aymen Hussein leads.", extraImg: "", extraLink: "" },
+    // --- Group J ---
+    "Argentina": { group: "J", flagCode: "ar", appearances: 19, best: "Champions (1978,1986,2022)", description: "Defending champions, new era after Messi.", extraImg: "", extraLink: "" },
+    "Austria": { group: "J", flagCode: "at", appearances: 8, best: "3rd place (1954)", description: "Rangnick's pressing machine, Sabitzer.", extraImg: "", extraLink: "" },
+    "Algeria": { group: "J", flagCode: "dz", appearances: 5, best: "Round of 16 (2014)", description: "Mahrez leads attacking flair.", extraImg: "", extraLink: "" },
+    "Jordan": { group: "J", flagCode: "jo", appearances: 1, best: "Debut", description: "First World Cup, Al-Tamari is star.", extraImg: "", extraLink: "" },
+    // --- Group K ---
+    "Portugal": { group: "K", flagCode: "pt", appearances: 9, best: "4th place (1966,2006)", description: "Ronaldo's final dance? Deep squad.", extraImg: "", extraLink: "" },
+    "Colombia": { group: "K", flagCode: "co", appearances: 7, best: "Quarter-finals (2014)", description: "Luis Diaz leads, James Rodriguez returns.", extraImg: "", extraLink: "" },
+    "Uzbekistan": { group: "K", flagCode: "uz", appearances: 1, best: "Debut", description: "First World Cup as independent nation.", extraImg: "", extraLink: "" },
+    "DR Congo": { group: "K", flagCode: "cd", appearances: 2, best: "Group stage (as Zaire 1974)", description: "Back after 52 years, Wan-Bissaka & Wissa.", extraImg: "", extraLink: "" },
+    // --- Group L ---
+    "England": { group: "L", flagCode: "gb-eng", appearances: 17, best: "Champions (1966)", description: "Golden generation, Bellingham & Kane.", extraImg: "", extraLink: "" },
+    "Croatia": { group: "L", flagCode: "hr", appearances: 7, best: "Runners-up (2018)", description: "Modric's farewell, midfield mastery.", extraImg: "", extraLink: "" },
+    "Ghana": { group: "L", flagCode: "gh", appearances: 5, best: "Quarter-finals (2010)", description: "Black Stars, Kudus world-class.", extraImg: "", extraLink: "" },
+    "Panama": { group: "L", flagCode: "pa", appearances: 2, best: "Group stage", description: "Underdogs seeking first win.", extraImg: "", extraLink: "" }
   };
 
-  // グループA〜Gまで順に表示
-  const groups = ["A", "B", "C", "D", "E", "F", "G"];
+  const groups = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
   
   function renderMainPage() {
     let html = ``;
@@ -264,16 +288,15 @@
       for (let [name, info] of groupTeams) {
         const flagUrl = `https://flagpedia.net/data/flags/icon/72x54/${info.flagCode}.png`;
         html += `<div class="team-item" data-team-name="${name.replace(/&/g, '&amp;')}">
-          <img class="team-flag" src="${flagUrl}" alt="${name} flag" loading="lazy">
+          <img class="team-flag" src="${flagUrl}" alt="${name} flag" loading="lazy" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_placeholder.png'">
           <span class="team-name">${name}</span>
         </div>`;
       }
       html += `</div></div>`;
     }
     document.getElementById("mainContent").innerHTML = html;
-    // チームクリックイベント
     document.querySelectorAll(".team-item").forEach(el => {
-      el.addEventListener("click", (e) => {
+      el.addEventListener("click", () => {
         const teamName = el.getAttribute("data-team-name");
         showDetailPage(teamName);
       });
@@ -288,7 +311,7 @@
       <button class="back-button" id="backMainBtn">← Back to groups</button>
       <div class="detail-view">
         <div class="detail-header">
-          <img class="detail-flag" src="${flagUrl}" alt="${teamName}">
+          <img class="detail-flag" src="${flagUrl}" alt="${teamName}" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_placeholder.png'">
           <h2>${teamName}</h2>
         </div>
         <div class="detail-stats">
@@ -296,7 +319,6 @@
           <strong>⭐ Best result:</strong> ${info.best}
         </div>
         <p>📝 ${info.description}</p>
-        <!-- 拡張用イメージ/リンクプレースホルダー (後で変更可) -->
         <div class="placeholder-img" id="dynamicImageSlot">
           🖼️ Image placeholder (future update)
         </div>
@@ -308,20 +330,15 @@
     document.getElementById("mainContent").innerHTML = detailHtml;
     document.getElementById("backMainBtn").addEventListener("click", () => {
       renderMainPage();
-      attachThemeButtons(); // 再アタッチ
+      attachThemeButtons();
     });
-    // 後から画像やリンクを差し替えられるようにプレースホルダー保持
     if (info.extraImg) document.getElementById("dynamicImageSlot").innerHTML = `<img src="${info.extraImg}" style="max-width:100%">`;
     if (info.extraLink) document.getElementById("dynamicLinkSlot").innerHTML = `<a href="${info.extraLink}" target="_blank">Official Website</a>`;
   }
 
-  // ダークモード/ライトモード切り替え (ダークデフォルト)
   function setTheme(theme) {
-    if (theme === 'light') {
-      document.body.classList.add('light');
-    } else {
-      document.body.classList.remove('light');
-    }
+    if (theme === 'light') document.body.classList.add('light');
+    else document.body.classList.remove('light');
     localStorage.setItem('theme', theme);
   }
 
@@ -334,13 +351,11 @@
     }
   }
 
-  // 初期化 & サービスワーカー登録
   function init() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
     renderMainPage();
     attachThemeButtons();
-
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').then(reg => {
         console.log('SW registered: ', reg);
